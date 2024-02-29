@@ -1,4 +1,4 @@
-package com.mousou85.invest_history.invest_history_app
+package com.mousou85.invest_history.android
 
 import io.flutter.embedding.android.FlutterActivity
 
