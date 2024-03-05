@@ -16,6 +16,7 @@ class Application extends ConsumerStatefulWidget {
 }
 
 class _ApplicationState extends ConsumerState<Application> {
+  /// 화면 목록
   final _screens = [
     GroupScreen(),
     HistoryScreen(),
@@ -32,6 +33,11 @@ class _ApplicationState extends ConsumerState<Application> {
     super.dispose();
   }
 
+  /// 페이지 변경 이벤트
+  void _onPageChanged(int index) {
+    ref.read(bottomNavigationProvider.notifier).setIndex(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = ref.watch(bottomNavigationProvider);
@@ -45,10 +51,8 @@ class _ApplicationState extends ConsumerState<Application> {
         ),
         body: PageView(
           controller: provider.pageController,
+          onPageChanged: _onPageChanged,
           children: _screens,
-          onPageChanged: (index) {
-            ref.read(bottomNavigationProvider.notifier).setIndex(index);
-          },
         ),
         bottomNavigationBar: BottomNavigation(screenCount: _screens.length),
       ),
