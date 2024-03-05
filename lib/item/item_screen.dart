@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'enums.dart';
+import 'widgets.dart';
+
 class ItemScreen extends StatefulWidget {
   const ItemScreen({super.key});
 
@@ -10,8 +13,17 @@ class ItemScreen extends StatefulWidget {
 class _ItemScreenState extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('item screen'),
+    return ListView(
+      children: [
+        ListItem(
+          itemName: 'item1',
+          itemType: ItemTypes.cash,
+        ),
+        ListItem(
+          itemName: 'item2',
+          itemType: ItemTypes.deposit,
+        ),
+      ],
     );
   }
 }
