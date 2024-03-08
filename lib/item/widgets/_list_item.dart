@@ -1,12 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
+import '../../shared/helpers.dart';
 import '../enums.dart';
 
+/// 상품 목록 아이템 위젯
 class ListItem extends StatelessWidget {
+  /// 상품명
   final String itemName;
+
+  /// 상품 타입
   final ItemTypes itemType;
+
+  /// 생성일
   final DateTime? createdAt;
 
   const ListItem({
@@ -34,6 +42,7 @@ class ListItem extends StatelessWidget {
             child: _ItemDetail(
               itemName: itemName,
               itemTypes: itemType,
+              createdAt: createdAt,
             ),
           ),
         ],
@@ -42,6 +51,7 @@ class ListItem extends StatelessWidget {
   }
 }
 
+/// 상품 목록 아이템 아이콘 위젯
 class _ItemIcon extends StatelessWidget {
   final IconData iconData;
 
@@ -61,9 +71,15 @@ class _ItemIcon extends StatelessWidget {
   }
 }
 
+/// 상품 목록 아이템 상세 정보 위젯
 class _ItemDetail extends StatelessWidget {
+  /// 상품명
   final String itemName;
+
+  /// 상품 타입
   final ItemTypes itemTypes;
+
+  /// 생성일
   final DateTime? createdAt;
 
   const _ItemDetail({
@@ -72,6 +88,7 @@ class _ItemDetail extends StatelessWidget {
     this.createdAt,
   });
 
+  /// 상품명 영역 생성
   Widget _buildItemName() {
     return Text(
       itemName,
@@ -83,12 +100,20 @@ class _ItemDetail extends StatelessWidget {
     );
   }
 
+  /// 상품 설명 영역 생성
   Widget _buildDescription() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(itemTypes.label),
-        Text('456'),
+        createdAt == null
+            ? const SizedBox()
+            : Row(
+                children: [
+                  const Icon(Symbols.calendar_add_on),
+                  Text(Helpers.dateFormat(createdAt!)),
+                ],
+              ),
       ],
     );
   }

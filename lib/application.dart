@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,6 +54,7 @@ class _ApplicationState extends ConsumerState<Application> {
         body: PageView(
           controller: provider.pageController,
           onPageChanged: _onPageChanged,
+          physics: const NeverScrollableScrollPhysics(),
           children: _screens,
         ),
         bottomNavigationBar: BottomNavigation(screenCount: _screens.length),

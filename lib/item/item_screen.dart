@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'enums.dart';
+import '../sample_data.dart';
 import 'widgets.dart';
 
+/// 상품 화면
 class ItemScreen extends StatefulWidget {
   const ItemScreen({super.key});
 
@@ -14,16 +15,15 @@ class _ItemScreenState extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        ListItem(
-          itemName: 'item1',
-          itemType: ItemTypes.cash,
-        ),
-        ListItem(
-          itemName: 'item2',
-          itemType: ItemTypes.deposit,
-        ),
-      ],
+      children: itemSampleData
+          .map(
+            (item) => ListItem(
+              itemName: item['name'],
+              itemType: item['type'],
+              createdAt: item['createdAt'],
+            ),
+          )
+          .toList(),
     );
   }
 }
