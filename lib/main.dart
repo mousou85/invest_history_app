@@ -1,22 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'application.dart';
-import 'themedata.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+FutureOr<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  await initializeDateFormatting();
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: materialThemeData,
-      home: const Application(),
-    );
-  }
+  runApp(
+    const ProviderScope(
+      child: Application(),
+    ),
+  );
 }

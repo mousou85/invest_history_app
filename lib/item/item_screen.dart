@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../sample_data.dart';
+import 'widgets.dart';
+
+/// 상품 화면
 class ItemScreen extends StatefulWidget {
   const ItemScreen({super.key});
 
@@ -10,8 +14,16 @@ class ItemScreen extends StatefulWidget {
 class _ItemScreenState extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('item screen'),
+    return ListView(
+      children: itemSampleData
+          .map(
+            (item) => ListItem(
+              itemName: item['name'],
+              itemType: item['type'],
+              createdAt: item['createdAt'],
+            ),
+          )
+          .toList(),
     );
   }
 }
