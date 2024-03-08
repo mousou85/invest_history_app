@@ -90,13 +90,25 @@ class _ItemDetail extends StatelessWidget {
 
   /// 상품명 영역 생성
   Widget _buildItemName() {
-    return Text(
-      itemName,
-      style: const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
-      ),
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            itemName,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
+        const Icon(
+          Symbols.edit_square,
+          size: 20,
+          weight: 700,
+          color: Colors.grey,
+        ),
+      ],
     );
   }
 
@@ -110,7 +122,7 @@ class _ItemDetail extends StatelessWidget {
             ? const SizedBox()
             : Row(
                 children: [
-                  const Icon(Symbols.calendar_add_on),
+                  const Icon(Symbols.calendar_add_on, size: 18),
                   Text(Helpers.dateFormat(createdAt!)),
                 ],
               ),
