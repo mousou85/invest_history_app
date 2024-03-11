@@ -1,11 +1,9 @@
-import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'group/group_screen.dart';
-import 'history/history_screen.dart';
-import 'item/item_screen.dart';
+import 'invest_history/history_screen.dart';
+import 'invest_item/item_screen.dart';
 import 'shared/states.dart';
 import 'shared/widgets.dart';
 import 'themedata.dart';

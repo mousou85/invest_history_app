@@ -1,4 +1,4 @@
-import 'package:invest_history_app/item/enums.dart';
+import 'invest_item/enums.dart';
 
 /// 투자 상품 샘플 데이터
 final List<Map<String, dynamic>> itemSampleData = [
